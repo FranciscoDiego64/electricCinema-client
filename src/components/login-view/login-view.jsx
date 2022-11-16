@@ -21,7 +21,7 @@ export function LoginView(props) {
         <Col>
           <CardGroup>
             <Card>
-              <Card.Title>Please Login</Card.Title>
+              <Card.Title>Welcome to Electric Cinema</Card.Title>
               <Card.Body>
                 <Form>
                   <Form.Group controlId="formUsername">
@@ -44,7 +44,7 @@ export function LoginView(props) {
                     />
                   </Form.Group>
 
-                  <Button variant="primary" type="submit" onClick={handleSubmit} >Submit</Button>
+                  <Button variant="dark" type="submit" onClick={handleSubmit} >Submit</Button>
 
                   <Button variant="link" type="submit">Register</Button> 
                 </Form>

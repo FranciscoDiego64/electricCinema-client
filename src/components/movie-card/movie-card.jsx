@@ -13,7 +13,7 @@ export class MovieCard extends React.Component {
           <Card.Body>
             <Card.Title>{movie.Title}</Card.Title>
             <Card.Text>{movie.Description}</Card.Text>
-            <Button onClick={() => onMovieClick(movie)} variant="danger">Open</Button>{' '}
+            <Button onClick={() => onMovieClick(movie)} variant="dark">Open</Button>{' '}
           </Card.Body>
          </Card>
           );

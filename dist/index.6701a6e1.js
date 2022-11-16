@@ -25602,7 +25602,7 @@ class MovieCard extends _reactDefault.default.Component {
                         /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
                             onClick: ()=>onMovieClick(movie)
                             ,
-                            variant: "danger",
+                            variant: "dark",
                             __source: {
                                 fileName: "src/components/movie-card/movie-card.jsx",
                                 lineNumber: 16
@@ -42888,7 +42888,7 @@ function LoginView(props) {
                                     lineNumber: 24
                                 },
                                 __self: this,
-                                children: "Please Login"
+                                children: "Welcome to Electric Cinema"
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx(_.Card.Body, {
                                 __source: {
@@ -42964,7 +42964,7 @@ function LoginView(props) {
                                             ]
                                         }),
                                         /*#__PURE__*/ _jsxRuntime.jsx(_.Button, {
-                                            variant: "primary",
+                                            variant: "dark",
                                             type: "submit",
                                             onClick: handleSubmit,
                                             __source: {

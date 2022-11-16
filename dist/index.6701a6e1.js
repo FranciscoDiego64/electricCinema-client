@@ -42964,7 +42964,7 @@ function LoginView(props) {
                                             ]
                                         }),
                                         /*#__PURE__*/ _jsxRuntime.jsx(_.Button, {
-                                            variant: "danger",
+                                            variant: "primary",
                                             type: "submit",
                                             onClick: handleSubmit,
                                             __source: {
@@ -42973,6 +42973,16 @@ function LoginView(props) {
                                             },
                                             __self: this,
                                             children: "Submit"
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_.Button, {
+                                            variant: "link",
+                                            type: "submit",
+                                            __source: {
+                                                fileName: "src/components/login-view/login-view.jsx",
+                                                lineNumber: 49
+                                            },
+                                            __self: this,
+                                            children: "Register"
                                         })
                                     ]
                                 })

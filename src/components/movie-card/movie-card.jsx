@@ -25,4 +25,3 @@ export class MovieCard extends React.Component {
         }).isRequired,
         onMovieClick: PropTypes.func.isRequired
       };
-

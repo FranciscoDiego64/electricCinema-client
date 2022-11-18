@@ -7,6 +7,7 @@ import { MovieView } from '../movie-view/movie-view';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 export class MainView extends React.Component {
 
@@ -46,11 +47,32 @@ export class MainView extends React.Component {
 
   // When a user successfully logs in, this function updates the `user` property in state to that *particular user
 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user
+      user: authData.user.Username
+    });
+  
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+  }
+
+  getMovies(token) {
+    axios.get('https://electriccinema.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   }
+  
 
   render() {
     const { movies, selectedMovie, user } = this.state;
@@ -65,7 +87,7 @@ export class MainView extends React.Component {
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-      <Row className="main-view justify-content-md-center">
+    <Row className="main-view justify-content-md-center">
         {selectedMovie ? (
           <Col md={8}>
             <MovieView
@@ -92,9 +114,6 @@ export class MainView extends React.Component {
     );
   }
 }
-
-
-
 
 {/*
   render() {

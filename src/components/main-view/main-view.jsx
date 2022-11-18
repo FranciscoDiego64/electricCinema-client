@@ -22,15 +22,13 @@ export class MainView extends React.Component {
   }
 
   componentDidMount(){
-    axios.get('https://electriccinema.herokuapp.com/movies')
-      .then(response => {
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
       });
+      this.getMovies(accessToken);
+    }
   }
  //When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie
   setSelectedMovie(newSelectedMovie) {
@@ -72,6 +70,14 @@ export class MainView extends React.Component {
       console.log(error);
     });
   }
+
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
   
 
   render() {
@@ -85,6 +91,8 @@ export class MainView extends React.Component {
 
  // Before the movies have been loaded
     if (movies.length === 0) return <div className="main-view" />;
+
+    <button onClick={() => { this.onLoggedOut() }}>Logout</button>
 
     return (
     <Row className="main-view justify-content-md-center">

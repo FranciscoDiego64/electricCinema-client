@@ -10,15 +10,62 @@ export function RegistrationView(props) {
   const [ password, setPassword ] = useState('');
   const [ email, setEmail ] = useState('');
   const [ Birthday, setBirthday] = useState('');
+  // Declare hook for each input
+  const [nameErr, setNameErr] = useState('');
+  const [usernameErr, setUsernameErr] = useState('');
+  const [passwordErr, setPasswordErr] = useState('');
+  const [emailErr, setEmailErr] = useState('');
 
+  const validate = () => {
+    let isReq = true;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(username, password, email, Birthday);
-    /* Send a request to the server for authentication */
-    /* then call props on registored user(username) */
-    props.onRegistration(username);
+    
+    if (!username) {
+      setUsernameErr('Username Required.');
+      isReq = false;
+    } else if (username.length < 4) {
+      setUsernameErr('Username must be at least 4 characters long.');
+      isReq = false;
+    }
+    if (!password) {
+      setPasswordErr('Password required.');
+    } else if (password.length < 7) {
+      setPasswordErr("Password must be at least 7 characters long.");
+      isReq = false;
+    }
+    if (!email) {
+      setEmailErr('Email required.');
+      isReq = false;
+    } else if (email.indexOf("@") === -1) {
+      setEmailErr('invalid email.');
+      isReq = false;
+    };
+
+    return isReq;
   };
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const isReq = validate();
+      if (isReq) {
+        axios
+          .post('https://electriccinema.herokuapp.com/users', {
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday,
+          })
+          .then((res) => {
+            const data = res.data;
+            alert('Registration successful');
+            window.open('/', '_self');
+          })
+          .catch((e) => {
+            console.error(e);
+            alert('Unable to register');
+          });
+      }
+    };
 
   return (
     <Container>
@@ -89,8 +136,13 @@ export function RegistrationView(props) {
       </Row>
     </Container>
   );
-}
-
-/*RegistrationView.propTypes = {
-  onRegistration: PropTypes.func.isRequired,
-}; */
+ }
+  
+ RegistrationView.propTypes = {
+  register: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired,
+  }),
+};

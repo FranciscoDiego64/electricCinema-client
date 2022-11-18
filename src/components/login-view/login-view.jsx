@@ -36,7 +36,7 @@ export function LoginView(props) {
     const isReq = validate();
     if(isReq) {
       /* Send a request to the server for authentication */
-    axios.post('https://electriccinema.herokuapp.com//login', {
+    axios.post('https://electriccinema.herokuapp.com/login', {
         Username: username,
         Password: password
      })

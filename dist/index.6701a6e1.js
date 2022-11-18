@@ -25417,7 +25417,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-//import { RegistrationView } from '../registration-view/registration-view'; All registration components have been commented so the app runs, otherwise nothing will be rendered
+//import { RegistrationView } from '../registration-view/registration-view'; 
 var _loginView = require("../login-view/login-view");
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
@@ -25496,7 +25496,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 89
+                lineNumber: 90
             },
             __self: this
         }));
@@ -25505,66 +25505,70 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 93
+                lineNumber: 94
             },
             __self: this
         }));
-        /*#__PURE__*/ _jsxRuntime.jsx("button", {
-            onClick: ()=>{
-                this.onLoggedOut();
-            },
-            __source: {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 95
-            },
-            __self: this,
-            children: "Logout"
-        });
-        return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
+        return(/*#__PURE__*/ _jsxRuntime.jsxs(_rowDefault.default, {
             className: "main-view justify-content-md-center",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 98
+                lineNumber: 97
             },
             __self: this,
-            children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                md: 8,
-                __source: {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 100
-                },
-                __self: this,
-                children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
-                    movie: selectedMovie,
-                    onBackClick: (newSelectedMovie)=>{
-                        this.setSelectedMovie(newSelectedMovie);
-                    },
+            children: [
+                selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                    md: 8,
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 101
-                    },
-                    __self: this
-                })
-            }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                    md: 3,
-                    __source: {
-                        fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 110
+                        lineNumber: 99
                     },
                     __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
-                        movie: movie,
-                        onMovieClick: (newSelectedMovie)=>{
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
+                        movie: selectedMovie,
+                        onBackClick: (newSelectedMovie)=>{
                             this.setSelectedMovie(newSelectedMovie);
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 111
+                            lineNumber: 100
                         },
                         __self: this
-                    }, movie._id)
+                    })
+                }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                        md: 3,
+                        __source: {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 109
+                        },
+                        __self: this,
+                        children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
+                            movie: movie,
+                            onMovieClick: (newSelectedMovie)=>{
+                                this.setSelectedMovie(newSelectedMovie);
+                            },
+                            __source: {
+                                fileName: "src/components/main-view/main-view.jsx",
+                                lineNumber: 110
+                            },
+                            __self: this
+                        }, movie._id)
+                    })
+                ),
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                    variant: "danger",
+                    type: "submit",
+                    onClick: ()=>{
+                        this.onLoggedOut();
+                    },
+                    __source: {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 120
+                    },
+                    __self: this,
+                    children: "Logout"
                 })
-            )
+            ]
         }));
     }
 }
@@ -42910,7 +42914,7 @@ function LoginView(props) {
     const handleSubmit = (e)=>{
         e.preventDefault();
         const isReq = validate();
-        if (isReq) /* Send a request to the server for authentication */ _axiosDefault.default.post('https://electriccinema.herokuapp.com//login', {
+        if (isReq) /* Send a request to the server for authentication */ _axiosDefault.default.post('https://electriccinema.herokuapp.com/login', {
             Username: username,
             Password: password
         }).then((response)=>{

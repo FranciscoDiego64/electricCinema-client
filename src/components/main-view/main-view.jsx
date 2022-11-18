@@ -1,13 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-//import { RegistrationView } from '../registration-view/registration-view'; All registration components have been commented so the app runs, otherwise nothing will be rendered
+
+//import { RegistrationView } from '../registration-view/registration-view'; 
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 export class MainView extends React.Component {
 
@@ -92,8 +93,6 @@ export class MainView extends React.Component {
  // Before the movies have been loaded
     if (movies.length === 0) return <div className="main-view" />;
 
-    <button onClick={() => { this.onLoggedOut() }}>Logout</button>
-
     return (
     <Row className="main-view justify-content-md-center">
         {selectedMovie ? (
@@ -118,20 +117,8 @@ export class MainView extends React.Component {
             </Col>
           ))
         )}
+        <Button variant="danger" type="submit" onClick={() => { this.onLoggedOut() }}>Logout</Button>
       </Row>
     );
   }
 }
-
-{/*
-  render() {
-    return (
-        <div classname='main-view'>
-            <div>Inception</div>
-            <div>The Shawshank Redemption</div>
-            <div>Gladiator</div>
-        </div>
-    );
-  }  
-} 
-*/}

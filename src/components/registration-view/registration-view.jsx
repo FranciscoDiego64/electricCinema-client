@@ -11,7 +11,7 @@ export function RegistrationView(props) {
   const [ email, setEmail ] = useState('');
   const [ Birthday, setBirthday] = useState('');
   // Declare hook for each input
-  const [nameErr, setNameErr] = useState('');
+  
   const [usernameErr, setUsernameErr] = useState('');
   const [passwordErr, setPasswordErr] = useState('');
   const [emailErr, setEmailErr] = useState('');
@@ -58,7 +58,7 @@ export function RegistrationView(props) {
           .then((res) => {
             const data = res.data;
             alert('Registration successful');
-            window.open('/', '_self');
+            window.open('/', '_self'); // '_self' is necessary so that the page will open in the current tab
           })
           .catch((e) => {
             console.error(e);
@@ -81,10 +81,11 @@ export function RegistrationView(props) {
                     <Form.Control
                       type="text"
                       value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                      placeholder="Enter a Username"
-                    />
+                      onChange={(e) => setUsername(e.target.value)} />
+
+                            {values.usernameErr && 
+                       <p>{values.usernameErr}</p>}
+
                   </Form.Group>
 
                   <Form.Group controlId="formPassword">
@@ -92,11 +93,11 @@ export function RegistrationView(props) {
                     <Form.Control
                       type="password"
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      minLength="5"
-                      placeholder="Your Password must be 5 characters or more"
-                    />
+                      onChange={(e) => setPassword(e.target.value)} />
+
+                             {values.passwordErr && 
+                       <p>{values.passwordErr}</p>}
+
                   </Form.Group>
 
                   <Form.Group controlId="formEmail">
@@ -104,10 +105,11 @@ export function RegistrationView(props) {
                     <Form.Control
                       type="email"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      placeholder="marcella@gmail.com"
-                    />
+                      onChange={(e) => setEmail(e.target.value)} />
+
+                              {values.emailErr && 
+                       <p>{values.emailErr}</p>}
+
                   </Form.Group>
 
                   <Form.Group controlId="formBirthday">
@@ -121,13 +123,7 @@ export function RegistrationView(props) {
                     />
                   </Form.Group>
 
-                  <Button
-                    variant="primary"
-                    type="submit"
-                    onClick={handleSubmit}
-                  >
-                    Register
-                  </Button>
+                  <Button variant="primary" type="submit" onClick={handleSubmit}>Register</Button>
                 </Form>
               </Card.Body>
             </Card>
@@ -143,6 +139,5 @@ export function RegistrationView(props) {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    Birthday: PropTypes.string.isRequired,
   }),
 };

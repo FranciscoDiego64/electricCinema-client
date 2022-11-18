@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
-//import { RegistrationView } from '../registration-view/registration-view'; 
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import { RegistrationView } from '../registration-view/registration-view'; 
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -86,15 +88,21 @@ export class MainView extends React.Component {
 
     // if (!register) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)}/>);
 
-// If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
+    //if (movies.length === 0) return <div className="main-view" />;
 
- // Before the movies have been loaded
+    if (!user) return <Row>
+      <Col>
+        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+      </Col>
+    </Row>
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-    <Row className="main-view justify-content-md-center">
+  
+
+<Row className="main-view justify-content-md-center">
         {selectedMovie ? (
           <Col md={8}>
             <MovieView

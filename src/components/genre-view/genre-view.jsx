@@ -1,51 +1,73 @@
 import React from "react";
-import { Button, Container, Col, Row } from "react-bootstrap";
+import { Button, Container, Col, Row, CardGroup } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 
-export class GenreView extends React.Component {
-  render() {
-    const { genre, onBackClick, genreMovies } = this.props;
-
-    return (
-      <div>
-        <Container className='genre-view'>
-          <Row>
-            <Col className='value'>
-              <h1>{genre.Genre.Name}</h1>
-            </Col>
-          </Row>
-          <Row>
-            <p className='value'>{genre.Genre.Description}</p>
-          </Row>
-          <Row>
-            <Col className='label'>
-              <h3>Other {genre.Genre.Name} films: </h3>
-            </Col>
-          </Row>
-
-          <Row>
-            {genreMovies.map((movie) => (
-              <Col lg={4} md={6}>
-                <MovieCard key={movie._id} movie={movie}>
-                  {movie.Title}
-                </MovieCard>
-              </Col>
-            ))}
-          </Row>
-
-          <Button
-            className='mt-4'
-            onClick={() => {onBackClick();}}>Back</Button>
-        </Container>
-      </div>
-    );
+export default class GenreView extends React.Component {
+    render() {
+      const { movies, genre, onBackClick } = this.props;
+  
+      return (
+        <Card bg="dark" text="light">
+          <Card.Header className="text-center" as="h5">
+            {genre.Name}
+          </Card.Header>
+          <Card.Body className="genre-textarea">
+            <Card bg="dark" border="dark" text="light">
+              <div className="movie-genre-description">
+                <span className="label">Description: </span>
+                <span className="value">{genre.Description}</span>
+              </div>
+              <span className="label headline-genre-mini-cards">
+                Selected movies that belong to this genre
+              </span>
+              <CardGroup className="card-group-genre-mini-cards">
+                {movies.map((m) => (
+                  <Col
+                    md={6}
+                    lg={3}
+                    key={m._id}
+                    className="genre-movie-card-mini"
+                  >
+                    <Link to={`/movies/${m._id}`}>
+                      <Card className="h-100" bg="dark" text="light">
+                        <Card.Img
+                          variant="top"
+                          crossOrigin="anonymous | use-credentials"
+                          src={m.ImagePath}
+                        />
+                        <Card.Body>
+                          <Card.Title>{m.Title}</Card.Title>
+                        </Card.Body>
+                      </Card>
+                    </Link>
+                  </Col>
+                ))}
+              </CardGroup>
+            </Card>
+          </Card.Body>
+          <Card.Footer className="text-right">
+            <Button
+              className="button-genre-view"
+              variant="secondary"
+              onClick={() => {
+                onBackClick();
+              }}
+            >
+              Back
+            </Button>
+          </Card.Footer>
+        </Card>
+      );
+    }
   }
-}
-
-GenreView.proptypes = {
-  Genre: PropTypes.shape({
-    Name: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-  }).isRequired,
-};
+  
+  GenreView.propTypes = {
+    movies: PropTypes.array.isRequired,
+    genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+    }).isRequired,
+    onBackClick: PropTypes.func.isRequired,
+  };

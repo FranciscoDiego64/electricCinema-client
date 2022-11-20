@@ -70,7 +70,7 @@ export default class DirectorView extends React.Component {
       );
     }
   }
-  
+
   DirectorView.propTypes = {
     movies: PropTypes.array.isRequired,
     director: PropTypes.shape({
@@ -81,6 +81,5 @@ export default class DirectorView extends React.Component {
     }).isRequired,
     onBackClick: PropTypes.func.isRequired,
   };
-
 
  

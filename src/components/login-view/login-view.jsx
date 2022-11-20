@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Button, Card, CardGroup, Container, Col, Row } from "react-bootstrap/";
+import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 
 export function LoginView(props) {
@@ -50,6 +52,12 @@ export function LoginView(props) {
     }
    };
 
+   const handleRegisterClick = (e) => {
+    e.preventDefault();
+    console.log("clicked Register");
+    props.toggleRegister(false);
+  };
+
 
   return (
     <Container>
@@ -82,7 +90,7 @@ export function LoginView(props) {
 
                   <Button variant="dark" type="submit" onClick={handleSubmit} >Submit</Button>
 
-                  <Button variant="link" type="submit">Register</Button> 
+                  <Button variant="link" type="submit" >Register</Button> 
                 </Form>
               </Card.Body>
             </Card>

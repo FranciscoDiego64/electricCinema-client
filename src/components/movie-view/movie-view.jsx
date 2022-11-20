@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 import { Button } from "react-bootstrap";
 
@@ -24,14 +25,21 @@ export class MovieView extends React.Component {
           <div className="movie-director">
             <span className="label">Director: </span>
             <span className="value">{movie.Director.Name}</span>
+          <div>
+            <Link to={`/directors/${movie.Director.Name}`}>
+              <Button variant="link">Learn more about the director</Button>
+            </Link>
           </div>
-          <div className="movie-director-bio">
-            <span className="label">About the director: </span>
-            <span className="value">{movie.Director.Bio}</span>
           </div>
+         
           <div className="movie-genre">
             <span className="label">Genre: </span>
             <span className="value">{movie.Genre.Name}</span>
+          <div>
+          <Link to={`/genres/${movie.Genre.Name}`}>
+              <Button variant="link">Learn more about the genre</Button>
+          </Link>
+          </div>
           </div>
           <Button onClick={() => { onBackClick(null); }} variant="dark">Back</Button>{' '}
           </div>
@@ -49,8 +57,6 @@ export class MovieView extends React.Component {
         }),
         Director: PropTypes.shape({
           Name: PropTypes.string.isRequired,
-          Bio: PropTypes.string.isRequired,
-          BirthYear: PropTypes.number.isRequired,
         }),
         Actors: PropTypes.array.isRequired,
         ImagePath: PropTypes.string.isRequired,

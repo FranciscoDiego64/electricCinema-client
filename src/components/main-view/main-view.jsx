@@ -74,6 +74,7 @@ export class MainView extends React.Component {
   render() {
     const { movies, user } = this.state;
     return (
+     <Container>
       <Router>
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
@@ -128,6 +129,8 @@ export class MainView extends React.Component {
           
         </Row>
       </Router>
+            <Button variant="danger" type="submit" onClick={() => { this.onLoggedOut() }}>Logout</Button>
+    </Container>
 
 
     );

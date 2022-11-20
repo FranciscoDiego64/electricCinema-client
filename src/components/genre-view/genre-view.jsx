@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Container, Col, Row, CardGroup } from "react-bootstrap";
-import { MovieCard } from "../movie-card/movie-card";
+import { Button, Container, Col, Row, CardGroup, Card } from "react-bootstrap";
+
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
 

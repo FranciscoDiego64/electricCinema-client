@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
+
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -90,7 +91,11 @@ export function LoginView(props) {
 
                   <Button variant="dark" type="submit" onClick={handleSubmit} >Submit</Button>
 
-                  <Button variant="link" type="submit" >Register</Button> 
+                  
+                  <Link to={`/register`}>
+                    <Button variant="link" type="submit" >Register</Button>  
+                  </Link>
+                  
                 </Form>
               </Card.Body>
             </Card>
@@ -100,3 +105,4 @@ export function LoginView(props) {
     </Container>
   );
 }
+

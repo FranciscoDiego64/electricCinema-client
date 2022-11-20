@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Container, Col, Row } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
+import PropTypes from 'prop-types';
 
 export class DirectorView extends React.Component {
   render() {
@@ -44,7 +45,10 @@ export class DirectorView extends React.Component {
 
 DirectorView.proptypes = {
     Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Birthday: PropTypes.string,
+        Name: PropTypes.string.isRequired,
+        Bio: PropTypes.string.isRequired,
+        BirthYear: PropTypes.number.isRequired,
     }).isRequired,
   };
+
+ 

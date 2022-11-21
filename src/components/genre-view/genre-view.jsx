@@ -20,7 +20,7 @@ export default class GenreView extends React.Component {
                 <span className="value">{genre.Description}</span>
               </div>
               <span className="label headline-genre-mini-cards">
-                Selected movies that belong to this genre
+                Selected movies that belong to this genre:
               </span>
               <CardGroup className="card-group-genre-mini-cards">
                 {movies.map((m) => (

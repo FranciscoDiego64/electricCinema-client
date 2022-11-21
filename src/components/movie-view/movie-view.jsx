@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { Button } from "react-bootstrap";
 
+
 export class MovieView extends React.Component {
     
     render() {

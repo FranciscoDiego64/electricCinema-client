@@ -25637,7 +25637,7 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 147
+                                    lineNumber: 144
                                 },
                                 __self: this
                             }),
@@ -25668,7 +25668,7 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 182
+                                    lineNumber: 179
                                 },
                                 __self: this
                             })
@@ -25683,7 +25683,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 216
+                        lineNumber: 213
                     },
                     __self: this,
                     children: "Logout"

@@ -141,10 +141,7 @@ export class MainView extends React.Component {
             }}
           />
 
-
-
-
-<Route
+            <Route
             path="/directors/:name"
             render={({ match, history }) => {
               /* If there is no user, the LoginView is rendered. If there is a user logged in, 
